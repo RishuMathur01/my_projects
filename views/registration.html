@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Registration</title>
+<link rel="stylesheet" href="/public/css/registration.css">
+</head>
+<body>
+    <div class="main">
+
+<h2>User Registration Form</h2>
+<form accept="/registration" method="post">
+    <div class="left_cont">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="firstname">First Name:</label><br>
+    <input type="text" id="firstname" name="firstname" required><br>
+    <label for="lastname">Middle Name:</label><br>
+    <input type="text" id="Middlename" name="Middlename" required><br>
+    <label for="lastname">Last Name:</label><br>
+    <input type="text" id="lastname" name="lastname" required><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+
+    <label for="dob">Date of Birth:</label><br>
+    <input type="date" id="dob" name="dob" required><br>
+
+    <label for="gender">Gender:</label><br>
+    <input type="radio" id="male" name="gender" value="male" required>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female" required>
+    <label for="female">Female</label>
+    <input type="radio" id="others" name="gender" value="others" required>
+    <label for="others">Others</label><br><br>
+
+</div><!--end left_cont-->
+<div class="right_cont">
+    <label for="address">Address:</label><br>
+    <textarea id="address" name="address" required></textarea>
+    <br>
+
+    <label for="city">City:</label><br>
+    <input type="text" id="city" name="city" required><br>
+
+    <label for="state">State:</label><br>
+    <input type="text" id="state" name="state" required><br>
+
+    <label for="zipcode">Zip Code:</label><br>
+    <input type="text" id="zipcode" name="zipcode" required><br>
+
+    <label for="country">Country:</label><br>
+    <input type="text" id="country" name="country" required><br>
+
+    <label for="phone">Phone Number:</label><br>
+    <input type="text" id="phone" name="phone" required><br>
+      
+    
+    <label for="password"> Create Password:</label><br>
+    <input type="password" id="password" name="password" required><br>
+    </div><!--right_cont-->
+    <input type="submit" value="Register" id="btn">
+
+    <script src="/js/registration.js"></script>
+
+</div>
+</form>
+</body>
+</html>

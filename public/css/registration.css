@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/form.jpg');
+    }
+
+h2 {
+    text-align: center;
+    color: black; 
+}
+
+form {
+    max-width: 600px;
+    height: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.455);
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+form{
+    display: flex;
+   
+}
+/* .left_cont{
+    margin: 60px;
+} */
+
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.right_cont{
+    margin-left: auto;
+}
+
+input[type="radio"] {
+    margin-right:5px;
+}
+
+input[type="date"] { 
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-sizing: border-box;
+ } 
+
+ input:hover{
+    background-color:rgb(216, 211, 211);
+ }
+
+input[type="submit"] {
+    width: 40%;
+    background-color: #4caf50;
+    color:white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 20px;
+    position:absolute;
+    top: 92%;
+
+}
+input[type="submit"]:hover{
+    background: rgba(116, 229, 246, 0.492);
+}
+input{
+    font-size: 20px;
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weWithTrain</title>
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    <div class="warrap">
+        <div class="main" style="background-image: url('/images/bg_wallpaper2.jpg');">
+            <div class="header">
+                <div class="Wallpaper">
+                    <div class="header_content">
+                    <img src="/images/web_logo.png" alt="image not found" class="main_log" >
+                     <ul class="main_links"> 
+                        <li class="login_page" ><a href="/login">LOGIN</a></li>
+                        <li class="MY TICKET"> <a href="/registration.html">REGISTER</a></li>
+                        <li class="AGENT LOGIN"><a href="#">AGENT LOGIN</a></li>
+                        <li class=""><a href="#">CONTACT US</a></li>
+                        <li class="ABOUT" style="background-color:rgb(133, 131, 131); color: red
+                         ; height: 30px; width: 90px; text-align:center; "><a href="#">ALERTS</a></li>
+
+                        <li class="logIn">  <span id="real-time"></span> <span id="real-date"></span> </li>
+                    </ul>
+                </div><!--content-->
+                    </div><!--wallpaperWithContent-->
+              </div><!--end header-->
+
+ <div class="form_contrainer">
+          
+         <div class="radio_buttons">
+
+            <div class="train_Booking">
+              <input type="radio" id="train_ticket1" name="options" value="show" onchange="togggle(this)" >
+              <label for="train_ticket1"> Book Train Tickets</label>
+              <form action="/search" method="POST">
+              <div class="cont1" id="ticket_form">
+                    <label for="FromCity">
+                        <p>From</p>
+                        <div>
+                            <input type="text" placeholder="From" id="FromCity" style="margin-left: 20px;" autocomplete="off" name="FromCity">
+                            <span class="result_box"></span>
+                        </div>
+                        
+                        <span class="twosidedarrow"><img src="/images/dobel sided arrow.png" alt="image not found" style="height: 30px;margin-top: 20px"></span>
+                        
+                    </label>
+                    <label for="toCity">
+                        <div>
+                        <p>To</p>
+                        <input type="text" placeholder="To" name="toCity" id="toCity" style="margin-left: 10px;" autocomplete="off">
+                        <span class="result_box1">
+                        </span>
+                    </div>
+                        
+                    </label>
+                    <label for="travel_date">
+                        <p>Travel Date</p>
+                        <input type="date" id="travel_date" name="travelDate" style="margin-left: 10px;">
+                    </label>
+                    <label for=" class_opt">
+                        <p>Class</p>
+                        <select name="class_opt" id="class_opt" style="margin-left: 10px;">
+                            <option value="">All Class</option>
+                            <option value="">Sleeper Class
+                                <option value="">Third Class</option>
+                                <option value="">Second AC</option>
+                                <option value="">First Class</option>
+                                <option value="">Second Seating</option>
+                               
+                            </option>
+                        </select>
+                    </label>
+                    
+              </div><!--cont1-->
+              <button id="btn1_serch">SEARCH</button>
+            </form>
+            <div id="searchResults"></div>
+           </div><!--end train booking-->
+           
+           <div class="PNR_status">
+            <label for="pnr"><input type="radio" class="pnr" name="options" value="hide" onchange="togggle(this)"> check PNR Status</label>
+           </div><!--end PNR status-->
+
+           <div class="train_route">
+              <input type="radio" class="Train_status" name="options" value="Train_routes">
+              <label for="Train_status">Train_routes</label>
+            </div><!--end train_route-->
+
+         </div><!-- end radio_buttons-->
+
+         
+ </div><!-- form_contrainder-->
+  
+ <footer>
+        <p class="header_content" style="margin-left: 3%;">Get Connected with us on solcial networks</p>
+  
+    
+        <ul class="media">
+         <li>
+            <a href="https://www.instagram.com/">
+       
+        <img src="/images/instagram.jpeg" alt="image not found"> <p>Instagram</p>
+    </a>
+        </li>
+        <li>
+            <a href="https://www.youtube.com/">
+           
+            <img src="/images/youtube.png" alt="image not found"> <p>Youtube</p>
+           </a>
+            </li>
+        <li>
+            <a href="https://www.facebook.com/">
+           
+            <img src="/images/facebook.png" alt="image not found"> <p>Fecebook</p>
+        </a>
+        </li>
+        <li>
+            <a href="https://twitter.com/i/flow/login">
+            
+            <img src="/images/twitter.jpeg" alt="image not found"><p>Twitter</p>
+        </a>
+        </li>
+        <li>
+            <a href="https://telegram.org/">
+          
+            <img src="/images/telegram.jpeg" alt="image not found">  <p>Telegram</p>
+        </a>
+        </li>
+        <li>
+            <a href="https://web.whatsapp.com/">
+            
+            <img src="/images/whatapp.jpeg" alt="image not found"><p>WhatsApp</p>
+        </a>
+        </li>
+            
+    </ul>
+
+ </footer>
+
+        </div><!--end main-->
+    </div><!--end wrrap-->
+    <script src="/server.js">
+        document.querySelector('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fromCity = document.getElementById('fromCity').value;
+      const toCity = document.getElementById('toCity').value;
+      const date = document.getElementById('date').value;
+      const classes = document.getElementById('classes').value;
+      const response = await fetch('/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fromCity, toCity, date, classes })
+      });
+      const data = await response.json();
+      const searchResults = document.getElementById('searchResults');
+      searchResults.innerHTML = JSON.stringify(data, null, 2);
+    });
+    </script>
+</body>
+</html>

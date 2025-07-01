@@ -1,0 +1,128 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trains</title>
+  <style>
+    body{margin: 0%;
+    padding: 0%;}
+    .train-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+
+    }
+
+    .train-card {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 10px;
+      padding: 10px 10px;
+      width: 300px; /* Adjust width as needed */
+      /* text-align: center; */
+    }
+
+    .train-card img {
+      width: 300px;
+      height:200px ;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .train-info h3 {
+      margin-bottom: 10px;
+    }
+
+    .train-info p {
+      margin: 5px 0;
+    }
+
+    .btn-book {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 8px 120px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-book:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="train-cards">
+    <% trains.forEach(train => { %>
+    <div class="train-card">
+      <img src="<%= train.image_url %>" alt="Train Image">
+      <div class="train-info">
+        <h3><%= train.train_name %></h3>
+        <p><strong>Departure:</strong> <%= train.departure_city %></p>
+        <p><strong>Arrival:</strong> <%= train.arrival_city %></p>
+        <p><strong>Date:</strong> <%= train.departure_date %></p>
+        <p><strong>Departure Time:</strong> <%= train.departure_time %></p>
+        <p><strong>Arrival Time:</strong> <%= train.arrival_time %></p>
+        <p><strong>Duration:</strong> <%= train.duration_hours %> hours</p>
+        <p><strong>Classes:</strong> <%= train.classes %></p>
+        <p><strong>Price:</strong> <%= train.price %></p>
+
+        <button class="btn-book">Book Now</button>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+
+  <div id="ticket-container"></div>
+
+ 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const bookButtons = document.querySelectorAll('.btn-book');
+
+  bookButtons.forEach(button => {
+    button.addEventListener('click', async () => {
+      const card = button.closest('.train-card');
+      const trainName = card.querySelector('h3').textContent;
+      const departureCity = card.querySelector('p:nth-child(2)').textContent;
+      const arrivalCity = card.querySelector('p:nth-child(3)').textContent;
+      const departureDate = card.querySelector('p:nth-child(4)').textContent;
+      const departureTime = card.querySelector('p:nth-child(5)').textContent;
+      const arrivalTime = card.querySelector('p:nth-child(6)').textContent;
+      const durationHours = card.querySelector('p:nth-child(7)').textContent;
+      const classes = card.querySelector('p:nth-child(8)').textContent;
+      const price = card.querySelector('p:nth-child(9)').textContent;
+
+      try {
+        const response = await fetch('http://localhost:5000/trains/ticket');
+        const ticketHtml = await response.text();
+
+        const formattedTicketHtml = ticketHtml.replace('{trainName}', trainName)
+          .replace('{departureCity}', departureCity)
+          .replace('{arrivalCity}', arrivalCity)
+          .replace('{departureDate}', departureDate)
+          .replace('{departureTime}', departureTime)
+          .replace('{arrivalTime}', arrivalTime)
+          .replace('{durationHours}', durationHours)
+          .replace('{classes}', classes)
+          .replace('{price}', price);
+
+        
+        const ticketWindow = window.open('', '_blank');
+        ticketWindow.document.write(formattedTicketHtml);
+      } catch (error) {
+        console.error('Error fetching ticket content:', error);
+      }
+    });
+  });
+});
+
+    </script>
+  
+</body>
+</html>

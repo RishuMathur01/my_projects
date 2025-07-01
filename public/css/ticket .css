@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+  }
+  
+  .ticket {
+    width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+  
+  .ticket-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .ticket-header img {
+    width: 100px;
+  }
+  
+  .ticket-info {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .passenger-info, .journey-info {
+    width: 50%;
+  }
+  
+  .ticket-footer {
+    margin-top: 20px;
+  }
+  
+  .ticket-footer p {
+    margin-bottom: 5px;
+  }
+ 
