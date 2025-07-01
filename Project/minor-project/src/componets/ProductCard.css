@@ -1,0 +1,36 @@
+
+.products-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #fefae0;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.category-menu {
+  margin-bottom: 20px;
+}
+
+.category-btn {
+  margin-right: 10px;
+  padding: 8px 16px;
+  background: #fff;
+  border: 2px solid #386641;
+  color: #386641;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.category-btn.active {
+  background: #386641;
+  color: #fff;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
